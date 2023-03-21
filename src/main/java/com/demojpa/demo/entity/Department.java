@@ -11,8 +11,6 @@ public class Department {
     @Column(unique = true)
     private String deptName;
 
-
-
     public Long getId() {
         return id;
     }
