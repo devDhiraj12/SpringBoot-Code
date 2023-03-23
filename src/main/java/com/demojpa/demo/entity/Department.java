@@ -1,6 +1,9 @@
 package com.demojpa.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Department {
@@ -10,6 +13,19 @@ public class Department {
 
     @Column(unique = true)
     private String deptName;
+
+    @OneToMany(mappedBy = "department")
+    @JsonManagedReference
+    private List<Employee> employeeList;
+
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
 
     public Long getId() {
         return id;
